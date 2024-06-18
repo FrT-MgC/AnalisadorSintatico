@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Analisador Sintático</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    
+        <script src="js/analiser.js"></script>
+        <script src="js/actions.js"></script>
+</head>
+<header>
+    <div class="header-titulo">
+        Analisador Sintático
+    </div>
+    <div class="header-autor">
+        Miguel Capitanio
+    </div>
+</header>
+<body>
+    <div class="container-fluid">
+        <hr>
+        
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="row">
+                    <div class="col-sm-11 adjust-margin">
+                        <div class="form-group form-group-sm">
+                            <h2>Verificar Sentenças</h2>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Insira a entrada aqui, ou clique em gerar" id="input-sentence">
+                                <div class="input-group-append">
+                                    <button class="btn btn-gerar" type="button" id="btn-generate">Gerar</button>
+                                    <button class="btn btn-danger" type="button" id="btn-clean" title="Limpar">X</button>
+                                </div>
+                                
+                            </div>
+                            <div class="btn-analiser">
+                                <button class="btn btn-color-padrao" type="button" id="btn-verify-sentence">Completo</button>
+                                <button class="btn btn-color-padrao" type="button" id="btn-verify-step">Passo à Passo</button>
+                            </div>
+                        </div>
+                        <table class="table table-sm table-bordered debug-table">
+                            <thead class="bg-style-table">
+                                <tr> 
+                                    <th>Pilha</th>
+                                    <th>Entrada</th>
+                                    <th>Ação</th>
+                                    <th>Iteração</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5 adjust-margin-top">
+                <div class="row mb-3">
+                    <div class="box">
+                        <h4>Gramática</h4>
+                        <hr class="border-hr1">
+                        <div style="font-family: monospace">
+                            S ::= aAb | bB
+                            <br> A ::= aCc | c
+                            <br> B ::= Abc
+                            <br> C ::= aBc | &epsilon;
+                        </div>
+                    </div>
+                    <div class="box">
+                        <h4>First</h4>
+                        <hr class="border-hr1"> 
+                        <div style="font-family: monospace">
+                            S ::= { a, b }
+                            <br> A ::= { a, c }
+                            <br> B ::= { a, c }
+                            <br> C ::= { a, &epsilon; }
+                        </div>
+                    </div>
+                    <div class="box">
+                        <h4>Follow</h4>
+                        <hr class="border-hr1">
+                        <div style="font-family: monospace">
+                            S ::= { $ }
+                            <br> A ::= { b }
+                            <br> B ::= { $, c }
+                            <br> C ::= { c }
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <h2>Tabela de Parsing</h2>
+                        <table class="table table-bordered">
+                            <thead class="bg-style-table">
+                                <tr>
+                                    <th></th>
+                                    <th>a</th>
+                                    <th>b</th>
+                                    <th>c</th>
+                                    <th>$</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="bg-style-table">S</th>
+                                    <td>S ::= aAb</td>
+                                    <td>S ::= bB</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-style-table">A</th>
+                                    <td>A ::= aCc</td>
+                                    <td></td>
+                                    <td>A ::= c</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-style-table">B</th>
+                                    <td>B ::= Abc</td>
+                                    <td></td>
+                                    <td>B ::= Abc</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-style-table">C</th>
+                                    <td>C ::= aBc</td>
+                                    <td></td>
+                                    <td>C ::= &epsilon;</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="footer">
+        <nav class="navbar">
+            <a class="navbar-brand">
+            </a>
+        </nav>
+    </div>
+</body>
+
+</html>

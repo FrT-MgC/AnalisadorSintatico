@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+
+body {
+    padding-bottom: 6rem;
+}
+
+input.is-invalid {
+    background-color: #d4737b;
+    color: #cc0a1d;
+}
+
+input.is-valid {
+    background-color: #4baf63;
+    color: #006e1a;
+}
+
+.not-margin-top{
+    margin-top: 0;
+}
+
+.bg-color-padrao{
+    background-color: grey;
+    
+}
+
+.btn-color-padrao{
+    background-color: rgb(18, 133, 165);
+    color: white;
+    
+}
+
+.bg-style-table{
+    background-color: lightgray;
+    color:rgb(0, 0, 0);
+    text-align:center;
+}
+/*
+.border-hr1{
+    border-color:#1B36EB;
+    margin-bottom: 3%;
+    width: 86%;
+    margin-left: 0;
+   
+}*/
+
+.border-hr1{
+    border-color:#000000;
+     margin-top: 10px;
+}
+
+.navbar a{
+    color: black !important;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
+
+.adjust-margin{
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+
+.margin-top{
+   margin-top: 15%;
+}
+
+.adjust-margin-top{
+ margin-top: 2%;
+}
+
+#btn-verify-sentence{
+    color:white;
+}
+
+
+.footer .navbar{
+    background-color: grey;
+}
+
+.footer .navbar a{
+    font-size: 15px;
+}
+.footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+
+.debug-table tbody{
+     margin-bottom: 20px;
+}
+
+h4{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+}
+
+.header-titulo{
+    background-color: grey;
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.header-autor{
+    background-color: grey;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+td{
+    text-align: center;
+}
+
+.btn-analiser{
+    text-align: center;
+    padding-top: 15px;
+}
+
+.btn-gerar{
+    background-color: rgb(49, 146, 49);
+    color: white;
+}
+
+.box{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    margin-right: 21px;
+    width: 30%;
+}
