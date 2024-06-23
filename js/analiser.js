@@ -112,7 +112,7 @@ function randomSentence() {
 /**
  * Realiza um passo da análise sintática
  */
-function makeStep() {
+function AnalisSintatico() {
 
     // cria a linha da tabela de derivação
     var debugRow = {
@@ -180,7 +180,7 @@ function makeStep() {
  * 
  * @param {string} inputString 
  */
-function oneStepAnalisis(inputString) {
+function analisCompleto(inputString) {
 
     // limpa as variáveis globais
     cleanGlobals();
@@ -190,7 +190,7 @@ function oneStepAnalisis(inputString) {
 
     // executa todos os passos até o final
     while (analising) {
-        makeStep();
+        AnalisSintatico();
     }
 
     return analisisState();
@@ -199,14 +199,14 @@ function oneStepAnalisis(inputString) {
 var savedInput = '';
 
 //Realiza a análise passo a passo
-function stepByStepAnalisis(inputString) {
+function analisPassoPasso(inputString) {
     if (inputString !== savedInput || !analising) {
         cleanGlobals();
         savedInput = inputString;
         input = (inputString + '$').split('');
     }
 
-    makeStep();
+    AnalisSintatico();
 
     return analisisState();
 }
