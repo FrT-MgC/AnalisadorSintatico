@@ -109,86 +109,65 @@ function randomSentence() {
     return sentence;
 }
 
-/**
- * Realiza um passo da análise sintática
- */
+//Analisador Sintatico
 function AnalisSintatico() {
 
-    // cria a linha da tabela de derivação
     var debugRow = {
         iter: iteration,
         stack: stack.join(''),
         input: input.join('')
     };
 
-    // topo da pilha
     var topStack = stack[stack.length - 1];
-
-    // simbolo atual na entrada
     var inSimbol = input[0];
 
-    // se o topo for o final da pilha e o simbolo de entrada também, foi aceito
     if (topStack === END_OF_STACK && inSimbol === END_OF_STACK) {
         analising = false;
         accepted = true;
         debugRow.action = 'Aceito em ' + iteration + ' iterações';
     } else {
-        // se o topo da pilha for igual ao simbolo da entrada, lê a entrada
         if (topStack === inSimbol) {
             debugRow.action = 'Ler \'' + inSimbol + '\'';
             stack.pop();
             input.shift();
 
-            // se existir uma entrada equivalente ao simbolo de entrada ao 
-            // não-terminal no topo da pilha na tabela de Parsing
         } else if (
             parsingTable[topStack] !== undefined &&
             parsingTable[topStack][inSimbol] !== undefined
         ) {
-            // produção em array da tabela de parsing para o simbolo terminal da entrada
             var toStack = parsingTable[topStack][inSimbol];
-            // produção em formato de string
             var production = toStack.join('');
-
-            // adiciona a ação atual na tabela de derivação
             debugRow.action = topStack + ' ⭢ ' + production;
 
-            // remove o topo da pilha
             stack.pop();
 
-            // se a produção não for vazia (epsilon), coloca seu conteúdo da pilha
             if (production !== EPSILON) {
                 for (var j = toStack.length - 1; j >= 0; j--) {
                     stack.push(toStack[j])
                 }
             }
 
-            // se a análise não for válida, finaliza a mesma com erro
         } else {
             analising = false;
             accepted = false;
             debugRow.action = 'Erro em ' + iteration + ' iterações';
         }
     }
-    // incrementa a iteração e coloca a linha gerada na tabela de derivação
     iteration++;
     debugTable.push(debugRow);
 }
 
 /**
- * Realiza a análise sintática em um passo
+ * Realiza a análise de forma completa
  * 
  * @param {string} inputString 
  */
+
 function analisCompleto(inputString) {
 
-    // limpa as variáveis globais
     cleanGlobals();
-
-    // transforma a entrada em array
     input = (inputString + '$').split('');
 
-    // executa todos os passos até o final
     while (analising) {
         AnalisSintatico();
     }
