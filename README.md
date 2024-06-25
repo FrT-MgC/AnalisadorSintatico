@@ -28,7 +28,6 @@ C	C ::= aBc			    C ::= ε
 Entradas:
 baaaacbcccbcccbc - Aceita em 26 iterações
 bacbc            - Aceita em 10 iterações
-bcbc			 - Aceita em 8 iterações
 aacb			 - Aceita em 8 iterações
 aaacbcccb        - Aceita em 15 iterações
 aaacbcbcabccb    - Erro em 12 iterações
